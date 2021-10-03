@@ -10,6 +10,8 @@ export function populatePoets () {
             const poets = res.data.authors;
             for (let poet of poets) {
                 const tag = document.createElement('span');
+                const poetID = poet.toLowerCase().replaceAll(' ', '-');
+                tag.setAttribute("id", poetID);
                 tag.classList.add('tag');
                 tag.classList.add('is-rounded');
                 tag.innerText = poet;
