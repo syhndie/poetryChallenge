@@ -1,4 +1,6 @@
-const populatePoets = () => {
+import { displayError } from "./utils.js";
+
+export function populatePoets () {
     axios.get('https://poetrydb.org/author')
     .then((res) => {
         if (res.data.status) {
