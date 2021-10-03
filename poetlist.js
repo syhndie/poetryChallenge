@@ -2,7 +2,7 @@ const populatePoets = () => {
     axios.get('https://poetrydb.org/author')
     .then((res) => {
         if (res.data.status) {
-            console.log('boo');
+            displayError('poets-error', 'The PoetryDB request did not return a result', res.data.status);
         } else {
             const poetsTags = document.getElementById('poets-tags');
             const poets = res.data.authors;
@@ -16,6 +16,6 @@ const populatePoets = () => {
         }
     })
     .catch((err) => {
-        console.log('ouch');
+        displayError('poets-error', 'There was a problem connecting to the Poetry DB', err);
     });
 };
