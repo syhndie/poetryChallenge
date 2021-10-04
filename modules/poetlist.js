@@ -6,16 +6,19 @@ export function populatePoets () {
         if (res.data.status) {
             displayError('poets-error', 'The PoetryDB request did not return a result', res.data.status);
         } else {
-            const poetsTags = document.getElementById('poets-tags');
+            const poetsBtns = document.getElementById('poets-btns');
             const poets = res.data.authors;
             for (let poet of poets) {
-                const tag = document.createElement('span');
+                const btn = document.createElement('button');
                 const poetID = poet.toLowerCase().replaceAll(' ', '-');
-                tag.setAttribute("id", poetID);
-                tag.classList.add('tag');
-                tag.classList.add('is-rounded');
-                tag.innerText = poet;
-                poetsTags.appendChild(tag);
+                btn.setAttribute("id", poetID);
+                btn.classList.add('button');
+                btn.classList.add('is-rounded');
+                btn.addEventListener('click', (e) => {
+                    e.target.classList.toggle('is-danger');
+                });
+                btn.innerText = poet;
+                poetsBtns.appendChild(btn);
             }
         }
     })
