@@ -1,6 +1,6 @@
-import { displayError } from "./utils.js";
+import { displayError, setButtonsStatus } from "./utils.js";
 
-export function populatePoets () {
+export function populatePoets(poetsNumber) {
     axios.get('https://poetrydb.org/author')
     .then((res) => {
         if (res.data.status) {
@@ -14,8 +14,10 @@ export function populatePoets () {
                 btn.setAttribute("id", poetID);
                 btn.classList.add('button');
                 btn.classList.add('is-rounded');
+                btn.classList.add('poet-selector');
                 btn.addEventListener('click', (e) => {
                     e.target.classList.toggle('is-danger');
+                    setButtonsStatus(poetsNumber);
                 });
                 btn.innerText = poet;
                 poetsBtns.appendChild(btn);
