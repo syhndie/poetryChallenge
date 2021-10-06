@@ -9,7 +9,7 @@ function countClickedButtons() {
     const allButtons = document.querySelectorAll(".poet-selector");
     let clickedCount = 0;
     for (let button of allButtons) {
-        if (button.className.includes('is-danger')) {
+        if (button.className.includes('is-selected')) {
             clickedCount++;            
         }
     }
@@ -22,7 +22,7 @@ export function setButtonsStatus(poetsNumber) {
     if (clickedCount == poetsNumber) {
         submitButton.disabled = false;
         for (let button of allButtons) {
-            if (button.className.includes('is-danger')) {
+            if (button.className.includes('is-selected')) {
                 button.disabled = false;
             } else {
                 button.disabled = true;

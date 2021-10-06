@@ -16,6 +16,7 @@ export function populatePoets(poetsNumber) {
                 btn.classList.add('is-rounded');
                 btn.classList.add('poet-selector');
                 btn.addEventListener('click', (e) => {
+                    e.target.classList.toggle('is-selected');
                     e.target.classList.toggle('is-danger');
                     setButtonsStatus(poetsNumber);
                 });
