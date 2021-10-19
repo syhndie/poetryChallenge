@@ -35,3 +35,15 @@ export function setButtonsStatus(poetsNumber) {
         }
     }
 };
+
+export function removeButtons() {
+    const buttonsDiv = document.getElementById('poets-btns');
+    const allPoetButtons = document.querySelectorAll("button.poet-selector");
+    for (let button of allPoetButtons) {
+        if (button.className.includes('is-selected')) {
+            continue;
+        } else {
+            buttonsDiv.removeChild(button);
+        }
+    }
+};

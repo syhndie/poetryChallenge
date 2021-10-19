@@ -1,4 +1,4 @@
-import { displayError, setButtonsStatus } from "./utils.js";
+import { displayError, setButtonsStatus, removeButtons } from "./utils.js";
 
 export function populatePoets(poetsNumber) {
     axios.get('https://poetrydb.org/author')
@@ -46,4 +46,5 @@ export function submitPoets() {
             displayError('poets-error', 'There was a problem connecting to the Poetry DB', err);
         });
     }
+    removeButtons();
 };
