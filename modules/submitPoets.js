@@ -2,6 +2,7 @@ import { displayError, removeButtons } from "./utils.js";
 
 export function submitPoets() {
     const poetButtons = document.querySelectorAll('button.is-selected');
+    const poemArray = [];
     for (let poetButton of poetButtons) {
         const axiosString = `https://poetrydb.org/author,random/${poetButton.innerText};1`;
         axios.get(axiosString)
@@ -9,7 +10,7 @@ export function submitPoets() {
             if(res.data.status){
                 displayError('poets-error', 'The PoetryDB request did not return a result', res.data.status);
             } else {
-                console.log(res.data);
+                poemArray.push(res.data);
             }
         })
         .catch((err) => {
