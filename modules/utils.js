@@ -18,7 +18,7 @@ function countClickedButtons() {
 
 export function setButtonsStatus(poetsNumber) {
     const { clickedCount, allButtons } = countClickedButtons();
-    const submitButton = document.getElementById('poets-submit');    
+    const submitButton = document.getElementById('poets-submit-button');    
     if (clickedCount == poetsNumber) {
         submitButton.disabled = false;
         for (let button of allButtons) {
@@ -37,13 +37,12 @@ export function setButtonsStatus(poetsNumber) {
 };
 
 export function removeButtons() {
-    const buttonsDiv = document.getElementById('poets-btns');
+    const poetButtonsDiv = document.getElementById('poets-btns');
     const allPoetButtons = document.querySelectorAll("button.poet-selector");
     for (let button of allPoetButtons) {
-        if (button.className.includes('is-selected')) {
-            continue;
-        } else {
-            buttonsDiv.removeChild(button);
-        }
+        poetButtonsDiv.removeChild(button);
     }
+    const submitButtonDiv = document.getElementById('poets-submit');
+    const submitButton = document.getElementById('poets-submit-button');
+    submitButtonDiv.removeChild(submitButton);
 };
