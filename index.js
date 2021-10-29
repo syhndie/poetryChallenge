@@ -1,4 +1,5 @@
-import {populatePoets, submitPoets} from "./modules/poetlist.js";
+import{ populatePoets } from "./modules/poetlist.js";
+import{ submitPoets } from "./modules/submitPoets.js";
 
 const poetsToCompare = 4;
 
