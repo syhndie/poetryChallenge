@@ -20,7 +20,7 @@ export async function submitPoets() {
             displayError('poets-error', 'There was a problem connecting to the Poetry DB', err);
         }
     }
-    console.log(poemArray);
     removeButtons();
+    return poemArray;
 };
 
