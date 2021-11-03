@@ -1,6 +1,6 @@
 import { displayError, setButtonsStatus } from "./utils.js";
 
-export async function populatePoets(poetsNumber) {
+export async function createInitialBtns(poetsNumber) {
     try {
         const res = await axios.get('https://poetrydb.org/author');
         if (res.data.status) {
@@ -17,7 +17,6 @@ export async function populatePoets(poetsNumber) {
                 btn.classList.add('poet-selector');
                 btn.addEventListener('click', (e) => {
                     e.target.classList.toggle('is-selected');
-                    e.target.classList.toggle('is-danger');
                     setButtonsStatus(poetsNumber);
                 });
                 btn.innerText = poet;

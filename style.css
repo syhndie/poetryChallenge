@@ -1,0 +1,38 @@
+.is-selected {
+    background-color: #D93723;
+    color: #F8D2A9;
+}
+.is-selected:hover {
+    color: #F8D2A9;
+}
+.is-selected:focus {
+    color: #F8D2A9;
+}
+.is-submit-btn {
+    background-color: #D93723;
+    color: #F8D2A9;
+}
+.is-submit-btn:hover {
+    color: #F8D2A9;
+}
+.is-submit-btn:focus {
+    color: #F8D2A9;
+}
+.is-green {
+    border-color: #558949;
+    border-width: thick;
+}
+.is-pink {
+    /* border-color: #A84492; */
+    border-color: #be446f;
+    border-width: thick;
+}
+.is-purple {
+    border-color: #692C8F;
+    border-width: thick;
+}
+.is-yellow {
+    border-color: #F7C303;
+    border-width: thick;
+}
+

@@ -5,7 +5,7 @@ export function displayError(errorDivID, errorMessage, errorCode) {
     errorDiv.appendChild(errorParagraph);
 };
 
-function countClickedButtons() {
+export function countClickedButtons() {
     const allButtons = document.querySelectorAll(".poet-selector");
     let clickedCount = 0;
     for (let button of allButtons) {
@@ -42,7 +42,7 @@ export function removeButtons() {
     for (let button of allPoetButtons) {
         poetButtonsDiv.removeChild(button);
     }
-    const submitButtonDiv = document.getElementById('poets-submit');
+    const submitButtonDiv = document.getElementById('submit-btn-div');
     const submitButton = document.getElementById('poets-submit-button');
     submitButtonDiv.removeChild(submitButton);
 };

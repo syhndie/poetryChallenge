@@ -1,11 +1,11 @@
-import{ populatePoets } from "./modules/poetlist.js";
+import{ createInitialBtns } from "./modules/createInitialBtns.js";
 import{ submitPoets } from "./modules/submitPoets.js";
 import { gameSetup } from "./modules/gameSetup.js";
 
 const poetsToCompare = 4;
 
 window.addEventListener('load', () => {
-    populatePoets(poetsToCompare);
+    createInitialBtns(poetsToCompare);
 });
 
 const poetsSubmitBtn = document.getElementById('poets-submit')
