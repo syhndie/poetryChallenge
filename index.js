@@ -1,7 +1,7 @@
-import{ createInitialBtns } from "./modules/createInitialBtns.js";
+import{ initialSetup } from "./modules/initialSetup.js";
 
-const poetsToCompare = 4;
+const numberOfMatches = 4;
 
 window.addEventListener('load', () => {
-    createInitialBtns(poetsToCompare);
+    initialSetup(numberOfMatches);
 });

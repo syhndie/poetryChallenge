@@ -1,50 +1,51 @@
-export function displayError(errorDivID, errorMessage, errorCode) {
-    const errorDiv = document.getElementById(errorDivID);
+export function displayError(errorMessage, errorCode) {
+    const errorDiv = document.getElementById('error-div');
     const errorParagraph = document.createElement('p');
     errorParagraph.innerText = `${errorMessage}: ${errorCode}`;
     errorDiv.appendChild(errorParagraph);
 };
 
-export function countClickedButtons() {
-    const allButtons = document.querySelectorAll(".poet-selector");
-    let clickedCount = 0;
-    for (let button of allButtons) {
-        if (button.className.includes('is-selected')) {
-            clickedCount++;            
+export function countSelectedPoets() {
+    const allPoets = document.querySelectorAll(".poet-selector");
+    let count = 0;
+    for (let poet of allPoets) {
+        if (poet.className.includes('is-selected')) {
+            count++;            
         }
     }
-    return { clickedCount, allButtons };
+    return count;
 };
 
-export function setButtonsStatus(poetsNumber) {
-    const { clickedCount, allButtons } = countClickedButtons();
-    const submitButton = document.getElementById('poets-submit-button');    
-    if (clickedCount == poetsNumber) {
-        submitButton.disabled = false;
-        for (let button of allButtons) {
-            if (button.className.includes('is-selected')) {
-                button.disabled = false;
+export function setButtonsStatus(numberOfMatches) {
+    const allPoetBtns = document.querySelectorAll('.poet-selector');
+    const numberSelected = countSelectedPoets();
+    const submitBtn = document.getElementById('poets-submit-btn');    
+    if (numberSelected == numberOfMatches) {
+        submitBtn.disabled = false;
+        for (let poetBtn of allPoetBtns) {
+            if (poetBtn.className.includes('is-selected')) {
+                poetBtn.disabled = false;
             } else {
-                button.disabled = true;
+                poetBtn.disabled = true;
             }
         }
     } else {
-        submitButton.disabled = true;
-        for (let button of allButtons) {
-            button.disabled = false;
+        submitBtn.disabled = true;
+        for (let poetBtn of allPoetBtns) {
+            poetBtn.disabled = false;
         }
     }
 };
 
-export function removeButtons() {
-    const poetButtonsDiv = document.getElementById('poets-btns');
-    const allPoetButtons = document.querySelectorAll("button.poet-selector");
-    for (let button of allPoetButtons) {
-        poetButtonsDiv.removeChild(button);
+export function removeBtns() {
+    const poetsDiv = document.getElementById('poets-div');
+    const allPoetBtns = document.querySelectorAll(".poet-selector");
+    for (let poetBtn of allPoetBtns) {
+        poetsDiv.removeChild(poetBtn);
     }
-    const submitButtonDiv = document.getElementById('submit-btn-div');
-    const submitButton = document.getElementById('poets-submit-button');
-    submitButtonDiv.removeChild(submitButton);
+    const submitDiv = document.getElementById('submit-div');
+    const submitBtn = document.getElementById('poets-submit-btn');
+    submitDiv.removeChild(submitBtn);
 };
 
 export function shuffle(array) {
