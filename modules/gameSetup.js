@@ -4,6 +4,7 @@ export function gameSetup(poemInfo) {
     const colorClasses = ['is-green', 'is-pink', 'is-purple', 'is-yellow'];
     const poetsDiv = document.getElementById('poets-div');
     const titlesDiv = document.getElementById('titles-div');
+    let classToAdd;
 
     const poetsShuffled = shuffle(poemInfo);
     for (let i = 0; i < poetsShuffled.length; i++) {
@@ -12,6 +13,7 @@ export function gameSetup(poemInfo) {
         btn.innerText = poet;
         btn.classList.add('button', 'is-rounded', 'poet', colorClasses[i]);
         btn.addEventListener('click', (e) => {
+            classToAdd = colorClasses[i];
             console.log(poet);
         });
         poetsDiv.appendChild(btn);
@@ -24,6 +26,11 @@ export function gameSetup(poemInfo) {
         btn.classList.add('button', 'is-rounded', 'poem-title');
         btn.innerText = title;
         btn.addEventListener('click', (e) => {
+            for (let i = 0; i < colorClasses.length; i++) {
+                btn.classList.remove(colorClasses[i]);
+            }
+            btn.classList.add(classToAdd);
+            classToAdd = 'button';
             console.log(title);
         });
         titlesDiv.appendChild(btn);

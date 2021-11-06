@@ -22,17 +22,29 @@
     border-color: #558949;
     border-width: thick;
 }
+.is-green:focus {
+    border-color: #558949;
+}
 .is-pink {
     /* border-color: #A84492; */
     border-color: #be446f;
     border-width: thick;
 }
+.is-pink:focus {
+    border-color: #be446f;
+}
 .is-purple {
     border-color: #692C8F;
     border-width: thick;
 }
+.is-purple:focus {
+    border-color: #692C8F;
+}
 .is-yellow {
     border-color: #F7C303;
     border-width: thick;
+}
+.is-yellow:focus {
+    border-color: #F7C303;
 }
 
