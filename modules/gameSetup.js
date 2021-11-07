@@ -14,7 +14,6 @@ export function gameSetup(poemInfo) {
         btn.classList.add('button', 'is-rounded', 'poet', colorClasses[i]);
         btn.addEventListener('click', (e) => {
             classToAdd = colorClasses[i];
-            console.log(poet);
         });
         poetsDiv.appendChild(btn);
     }
@@ -29,9 +28,10 @@ export function gameSetup(poemInfo) {
             for (let i = 0; i < colorClasses.length; i++) {
                 btn.classList.remove(colorClasses[i]);
             }
-            btn.classList.add(classToAdd);
-            classToAdd = 'button';
-            console.log(title);
+            if (classToAdd) {
+                btn.classList.add(classToAdd);
+            }
+            classToAdd = null;
         });
         titlesDiv.appendChild(btn);
     }
