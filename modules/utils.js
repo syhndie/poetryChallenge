@@ -5,7 +5,7 @@ export function displayError(errorMessage, errorCode) {
     errorDiv.appendChild(errorParagraph);
 };
 
-export function countSelectedPoets() {
+function countSelectedPoets() {
     const allPoets = document.querySelectorAll(".poet-selector");
     let count = 0;
     for (let poet of allPoets) {
@@ -38,14 +38,10 @@ export function setButtonsStatus(numberOfMatches) {
 };
 
 export function removeBtns() {
-    const poetsDiv = document.getElementById('poets-div');
-    const allPoetBtns = document.querySelectorAll(".poet-selector");
-    for (let poetBtn of allPoetBtns) {
-        poetsDiv.removeChild(poetBtn);
+    const allBtns = document.querySelectorAll('button');
+    for (let btn of allBtns) {
+        btn.remove();
     }
-    const submitDiv = document.getElementById('submit-div');
-    const submitBtn = document.getElementById('poets-submit-btn');
-    submitDiv.removeChild(submitBtn);
 };
 
 export function shuffle(array) {
