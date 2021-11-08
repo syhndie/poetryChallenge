@@ -1,3 +1,13 @@
+export function createSubmitBtn(text) {
+    const submitDiv = document.getElementById('submit-div');
+    const submitBtn = document.createElement('button');
+    submitBtn.disabled = true;
+    submitBtn.innerText = text;
+    submitBtn.classList.add('button', 'is-fullwidth', 'is-medium', 'is-submit-btn');
+    submitDiv.appendChild(submitBtn);
+    return submitBtn;
+};
+
 export function displayError(errorMessage, errorCode) {
     const errorDiv = document.getElementById('error-div');
     const errorParagraph = document.createElement('p');
@@ -16,10 +26,10 @@ function countSelectedPoets() {
     return count;
 };
 
-export function setButtonsStatus(numberOfMatches) {
+export function setPoetSelectingBtnStatuses(numberOfMatches) {
     const allPoetBtns = document.querySelectorAll('.poet-selector');
     const numberSelected = countSelectedPoets();
-    const submitBtn = document.getElementById('poets-submit-btn');    
+    const submitBtn = document.querySelector('.is-submit-btn');
     if (numberSelected == numberOfMatches) {
         submitBtn.disabled = false;
         for (let poetBtn of allPoetBtns) {
@@ -55,5 +65,16 @@ export function shuffle(array) {
         array[index] = temp;
     }
     return array;
+};
+
+export function countMatches(colorClasses) {
+    const titleBtns = document.querySelectorAll('.poem-title');
+    let count = 0;
+    for (let titleBtn of titleBtns) {
+        if (titleBtn.classList.contains('matched')) {
+            count++;
+        }
+    }
+    return count;
 };
 

@@ -1,9 +1,15 @@
-import { shuffle } from "./utils.js";
+import { createSubmitBtn, shuffle, countMatches } from "./utils.js";
 
 export function gameSetup(poemInfo) {
+    const submitBtn = createSubmitBtn('Submit Your Matches');
+    submitBtn.addEventListener('click', (e) => {
+        console.log('Check submitted matches');
+    });
+
     const colorClasses = ['is-green', 'is-pink', 'is-purple', 'is-yellow'];
     const poetsDiv = document.getElementById('poets-div');
     const titlesDiv = document.getElementById('titles-div');
+
     let classToAdd;
 
     const poetsShuffled = shuffle(poemInfo);
@@ -26,10 +32,22 @@ export function gameSetup(poemInfo) {
         btn.innerText = title;
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < colorClasses.length; i++) {
-                btn.classList.remove(colorClasses[i]);
+                btn.classList.remove(colorClasses[i], 'matched');
+                const titlesMatched = countMatches();
+                if (titlesMatched == colorClasses.length) {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
             }
             if (classToAdd) {
-                btn.classList.add(classToAdd);
+                btn.classList.add(classToAdd, 'matched');
+                const titlesMatched =  countMatches();
+                if (titlesMatched == colorClasses.length) {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
             }
             classToAdd = null;
         });
