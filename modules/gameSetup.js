@@ -1,4 +1,4 @@
-import { createSubmitBtn, shuffle, countMatches } from "./utils.js";
+import { createSubmitBtn, shuffle, setMatchSubmitBtnStatus } from "./utils.js";
 
 export function gameSetup(poemInfo) {
     const submitBtn = createSubmitBtn('Submit Your Matches');
@@ -33,21 +33,11 @@ export function gameSetup(poemInfo) {
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < colorClasses.length; i++) {
                 btn.classList.remove(colorClasses[i], 'matched');
-                const titlesMatched = countMatches();
-                if (titlesMatched == colorClasses.length) {
-                    submitBtn.disabled = false;
-                } else {
-                    submitBtn.disabled = true;
-                }
+                setMatchSubmitBtnStatus(colorClasses);
             }
             if (classToAdd) {
                 btn.classList.add(classToAdd, 'matched');
-                const titlesMatched =  countMatches();
-                if (titlesMatched == colorClasses.length) {
-                    submitBtn.disabled = false;
-                } else {
-                    submitBtn.disabled = true;
-                }
+                setMatchSubmitBtnStatus(colorClasses);
             }
             classToAdd = null;
         });

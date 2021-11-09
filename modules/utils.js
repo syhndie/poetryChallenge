@@ -67,7 +67,7 @@ export function shuffle(array) {
     return array;
 };
 
-export function countMatches(colorClasses) {
+function countMatches() {
     const titleBtns = document.querySelectorAll('.poem-title');
     let count = 0;
     for (let titleBtn of titleBtns) {
@@ -76,5 +76,15 @@ export function countMatches(colorClasses) {
         }
     }
     return count;
+};
+
+export function setMatchSubmitBtnStatus(colorClasses) {
+    const submitBtn = document.querySelector('.is-submit-btn');
+    const titlesMatched = countMatches();
+    if (titlesMatched == colorClasses.length) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
 };
 
