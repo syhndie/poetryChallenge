@@ -1,4 +1,38 @@
-import { createSubmitBtn, shuffle, setMatchSubmitBtnStatus } from "./utils.js";
+import { createSubmitBtn } from "./utils.js";
+
+function shuffle(array) {
+    let counter = array.length;
+    while (counter > 0) {
+        const index = Math.floor(Math.random() * counter);
+        counter--;
+
+        const temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+    return array;
+};
+
+function countMatches() {
+    const titleBtns = document.querySelectorAll('.poem-title');
+    let count = 0;
+    for (let titleBtn of titleBtns) {
+        if (titleBtn.classList.contains('matched')) {
+            count++;
+        }
+    }
+    return count;
+};
+
+function setMatchSubmitBtnStatus(colorClasses) {
+    const submitBtn = document.querySelector('.is-submit-btn');
+    const titlesMatched = countMatches();
+    if (titlesMatched == colorClasses.length) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+};
 
 export function gameSetup(poemInfo) {
     const submitBtn = createSubmitBtn('Submit Your Matches');

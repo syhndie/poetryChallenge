@@ -1,4 +1,11 @@
-import { displayError, removeBtns } from "./utils.js";
+import { displayError } from "./utils.js";
+
+function removeBtns() {
+    const allBtns = document.querySelectorAll('button');
+    for (let btn of allBtns) {
+        btn.remove();
+    }
+};
 
 export async function submitPoets() {
     const selectedBtns = document.querySelectorAll('.is-selected');
