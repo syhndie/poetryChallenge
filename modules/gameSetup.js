@@ -1,4 +1,7 @@
 import { createSubmitBtn } from "./utils.js";
+import { checkMatches } from "./checkMatches.js";
+
+const colorClasses = ['is-green', 'is-pink', 'is-purple', 'is-yellow'];
 
 function shuffle(array) {
     let counter = array.length;
@@ -37,10 +40,9 @@ function setMatchSubmitBtnStatus(colorClasses) {
 export function gameSetup(poemInfo) {
     const submitBtn = createSubmitBtn('Submit Your Matches');
     submitBtn.addEventListener('click', (e) => {
-        console.log('Check submitted matches');
+        checkMatches(poemInfo);
     });
 
-    const colorClasses = ['is-green', 'is-pink', 'is-purple', 'is-yellow'];
     const poetsDiv = document.getElementById('poets-div');
     const titlesDiv = document.getElementById('titles-div');
 
@@ -62,7 +64,7 @@ export function gameSetup(poemInfo) {
     for (let i = 0; i < titlesShuffled.length; i++) {
         const title = titlesShuffled[i].title;
         const btn = document.createElement('button');
-        btn.classList.add('button', 'is-rounded', 'poem-title');
+        btn.classList.add('button', 'is-rounded', 'title');
         btn.innerText = title;
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < colorClasses.length; i++) {
