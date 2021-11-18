@@ -37,6 +37,34 @@ function setMatchSubmitBtnStatus(colorClasses) {
     }
 };
 
+function removeColorClass(btn) {
+    for (let colorClass of colorClasses) {
+        btn.classList.remove(colorClass, 'matched');
+    }
+};
+
+function setTitleBtnColor(e, classToAdd) {
+    const btn = e.currentTarget;
+    if (!classToAdd) {
+        btn.classList.remove('matched');
+        removeColorClass(btn);
+        setMatchSubmitBtnStatus(colorClasses);
+        //add instructional message here
+        console.log('no class to add');
+        return classToAdd;
+    }
+    const sameColorTitles = document.querySelectorAll(`.poem-title.${classToAdd}`);
+    if (sameColorTitles.length > 0) {
+        //add error message here
+        console.log('this color already assigned');
+    } else {
+        removeColorClass(btn);
+        btn.classList.add(classToAdd, 'matched');
+        setMatchSubmitBtnStatus(colorClasses);
+    }
+    return null;
+};
+
 export function gameSetup(poemInfo) {
     const submitBtn = createSubmitBtn('Submit Your Matches');
     submitBtn.addEventListener('click', (e) => {
@@ -64,18 +92,10 @@ export function gameSetup(poemInfo) {
     for (let i = 0; i < titlesShuffled.length; i++) {
         const title = titlesShuffled[i].title;
         const btn = document.createElement('button');
-        btn.classList.add('button', 'is-rounded', 'title');
+        btn.classList.add('button', 'is-rounded', 'poem-title');
         btn.innerText = title;
-        btn.addEventListener('click', (e) => {
-            for (let i = 0; i < colorClasses.length; i++) {
-                btn.classList.remove(colorClasses[i], 'matched');
-                setMatchSubmitBtnStatus(colorClasses);
-            }
-            if (classToAdd) {
-                btn.classList.add(classToAdd, 'matched');
-                setMatchSubmitBtnStatus(colorClasses);
-            }
-            classToAdd = null;
+        btn.addEventListener('click', (e) => { 
+            classToAdd = setTitleBtnColor(e, classToAdd); 
         });
         titlesDiv.appendChild(btn);
     }
